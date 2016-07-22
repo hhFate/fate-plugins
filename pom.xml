@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>fate.webapp.plugins</groupId>
-  <artifactId>folder</artifactId>
+  <groupId>cn.reinforce</groupId>
+  <artifactId>plugins</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
   <name>幻幻的插件库</name>
@@ -51,8 +51,8 @@
 		</pluginManagement>
 	</build>
 	<modules>
-		<module>幻幻的插件库--QQ</module>
-		<module>幻幻的插件库--新浪微博</module>
-		<module>幻幻的工具箱</module>
+		<module>插件库--QQ</module>
+		<module>插件库--新浪微博</module>
+		<module>fate-utils</module>
 	</modules>
 </project>

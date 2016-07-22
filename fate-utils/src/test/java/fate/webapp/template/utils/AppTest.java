@@ -13,7 +13,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
-import fate.utils.Base64;
+import cn.reinforce.Base64;
 
 
 /**
