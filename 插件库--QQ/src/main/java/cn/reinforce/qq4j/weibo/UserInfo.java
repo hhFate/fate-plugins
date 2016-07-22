@@ -1,4 +1,4 @@
-package cn.reinforce.utils.qq4j.weibo;
+package cn.reinforce.qq4j.weibo;
 
 import java.util.ArrayList;
 

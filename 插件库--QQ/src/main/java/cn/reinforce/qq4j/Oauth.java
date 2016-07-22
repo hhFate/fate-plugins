@@ -1,4 +1,4 @@
-package cn.reinforce.utils.qq4j;
+package cn.reinforce.qq4j;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

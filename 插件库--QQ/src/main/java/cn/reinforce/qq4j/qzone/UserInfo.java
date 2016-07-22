@@ -1,4 +1,4 @@
-package cn.reinforce.utils.qq4j.qzone;
+package cn.reinforce.qq4j.qzone;
 
 import com.qq.connect.QQConnect;
 import com.qq.connect.QQConnectException;
