@@ -53,7 +53,7 @@ public class HttpClientUtil {
 			
 			if (responseEntity != null) {  
 				String submitResult = EntityUtils.toString(responseEntity, "UTF-8");
-				System.out.println(submitResult);
+//				System.out.println(submitResult);
 				HttpResult result = new HttpResult();
 				result.setStatusCode(response.getStatusLine().getStatusCode());
 				result.setResult(submitResult);
@@ -140,7 +140,7 @@ public class HttpClientUtil {
 			
 			if (responseEntity != null) {  
 				String submitResult = EntityUtils.toString(responseEntity, "UTF-8");
-				System.out.println(submitResult);
+//				System.out.println(submitResult);
 				HttpResult result = new HttpResult();
 				result.setStatusCode(response.getStatusLine().getStatusCode());
 				result.setResult(submitResult);
@@ -181,7 +181,7 @@ public class HttpClientUtil {
 			
 			if (responseEntity != null) {  
 				String submitResult = EntityUtils.toString(responseEntity, "UTF-8");
-				System.out.println(submitResult);
+//				System.out.println(submitResult);
 				HttpResult result = new HttpResult();
 				result.setStatusCode(response.getStatusLine().getStatusCode());
 				result.setResult(submitResult);
@@ -221,7 +221,7 @@ public class HttpClientUtil {
 			
 			if (responseEntity != null) {  
 				String submitResult = EntityUtils.toString(responseEntity, "UTF-8");
-				System.out.println(submitResult);
+//				System.out.println(submitResult);
 				HttpResult result = new HttpResult();
 				result.setStatusCode(response.getStatusLine().getStatusCode());
 				result.setResult(submitResult);
