@@ -82,7 +82,7 @@ public class JHUtils {
      * @param templeteId
      * @return
      */
-    public static Sms sendCommentSms(String mobile, String site, String key, int templeteId) {
+    public static Sms sendFriendLinkSms(String mobile, String site, String key, int templeteId) {
         List<NameValuePair> pair = new ArrayList<>();
         pair.add(new BasicNameValuePair("mobile", mobile));
         pair.add(new BasicNameValuePair("tpl_id", Integer.toString(templeteId)));
