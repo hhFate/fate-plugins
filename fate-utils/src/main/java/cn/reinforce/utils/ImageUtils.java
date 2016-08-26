@@ -51,6 +51,15 @@ public class ImageUtils {
         super();
     }
 
+	/**
+	 * 按文件名判断是否是图片
+	 * @param type
+	 * @return
+	 */
+	public static boolean isImage(String type){
+    	return IMAGE_TYPE_BMP.equals(type)||IMAGE_TYPE_JPG.equals(type)||IMAGE_TYPE_JPEG.equals(type)||IMAGE_TYPE_GIF.equals(type)||IMAGE_TYPE_PNG.equals(type);
+	}
+
     public static void resize(File originalFile, File resizedFile,
 			int newWidth, int newHeight, float quality) {
 		try {

@@ -255,10 +255,11 @@ public class HttpClientUtil {
 	 */
 	public static String downloadImg(String url, String folder, String downloadUrl){
 		CloseableHttpClient httpclient = HttpClients.createDefault();
-		String fileType = url.substring(url.lastIndexOf("."));
-		if(Strings.isEmpty(fileType)){
-			fileType = ".jpg";
+		String fileType = url.substring(url.lastIndexOf(".")+1);
+		if(Strings.isEmpty(fileType)||!ImageUtils.isImage(fileType)){
+			fileType = "jpg";
 		}
+		fileType = "."+fileType;
 		long now = System.currentTimeMillis();
 		String newUrl = downloadUrl + now + fileType;
 		File dir = new File(folder);
