@@ -24,10 +24,10 @@ public class GeetestUtil {
         //从session中获取gt-server状态
         int gt_server_status_code = (Integer) request.getSession().getAttribute(gtSdk.gtServerStatusSessionKey);
 
+        int gtResult = 0;
+
         //从session中获取userid
         String userid = (String)request.getSession().getAttribute("userid");
-
-        int gtResult = 0;
 
         if (gt_server_status_code == 1) {
             //gt-server正常，向gt-server进行二次验证
