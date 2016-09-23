@@ -589,21 +589,21 @@ public class Times {
         long ms = System.currentTimeMillis() - d.getTime();
         // 如果 1 分钟内，打印 Just Now
         if (ms < (60000)) {
-            return "Just Now";
+            return "刚刚";
         }
         // 如果 1 小时内，打印多少分钟
         if (ms < (60 * 60000)) {
-            return "" + (ms / 60000) + "分钟";
+            return "" + (ms / 60000) + "分钟前";
         }
 
         // 如果 1 天之内，打印多少小时之前
         if (ms < (24 * 3600 * 1000)) {
-            return "" + (ms / 3600000) + "小时";
+            return "" + (ms / 3600000) + "小时前";
         }
 
         // 如果一周之内，打印多少天之前
         if (ms < (7 * 24 * 3600 * 1000)) {
-            return "" + (ms / (24 * 3600000)) + "天";
+            return "" + (ms / (24 * 3600000)) + "天前";
         }
 
         // 如果是今年之内，打印月份和日期
