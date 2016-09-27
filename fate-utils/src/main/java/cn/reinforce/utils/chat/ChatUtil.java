@@ -51,6 +51,24 @@ public class ChatUtil {
 		return gson.fromJson(result, CommonResponse.class);
 	}
 
+	public static CommonResponse updateDept(String id, String name, String desc){
+		List<NameValuePair> pairs = new ArrayList<>();
+		pairs.add(new BasicNameValuePair("name", name));
+		pairs.add(new BasicNameValuePair("desc", desc));
+		pairs.add(new BasicNameValuePair("appSecret", appSecret));
+		String result = HttpClientUtil.put(endpoint+"op/syn/user/name/"+id, pairs).getResult();
+		Gson gson = GsonUtil.getGson();
+		return gson.fromJson(result, CommonResponse.class);
+	}
+
+	public static CommonResponse deleteDept(String id){
+		List<NameValuePair> pairs = new ArrayList<>();
+		pairs.add(new BasicNameValuePair("appSecret", appSecret));
+		String result = HttpClientUtil.put(endpoint+"op/syn/user/"+id, pairs).getResult();
+		Gson gson = GsonUtil.getGson();
+		return gson.fromJson(result, CommonResponse.class);
+	}
+
 	public static CommonResponse createUser(String uid, String realName, String username, String password, String mobile, String headIcon, String department){
 		List<NameValuePair> pairs = new ArrayList<>();
 		pairs.add(new BasicNameValuePair("synId", uid));
@@ -64,6 +82,34 @@ public class ChatUtil {
 		String result = HttpClientUtil.post(endpoint+"op/syn/user", pairs).getResult();
 		Gson gson = GsonUtil.getGson();
 		System.out.println(result);
+		return gson.fromJson(result, CommonResponse.class);
+	}
+
+	public static CommonResponse updateUserDept(String uid, String deptId){
+		List<NameValuePair> pairs = new ArrayList<>();
+		pairs.add(new BasicNameValuePair("deptId", deptId));
+		pairs.add(new BasicNameValuePair("appSecret", appSecret));
+		String result = HttpClientUtil.put(endpoint+"op/syn/user/nickname/"+uid, pairs).getResult();
+		Gson gson = GsonUtil.getGson();
+		return gson.fromJson(result, CommonResponse.class);
+	}
+
+	public static CommonResponse updateChatToken(String uid, String chatToken){
+		List<NameValuePair> pairs = new ArrayList<>();
+		pairs.add(new BasicNameValuePair("chatToken", chatToken));
+		pairs.add(new BasicNameValuePair("appSecret", appSecret));
+		System.out.println(endpoint);
+		String result = HttpClientUtil.put(endpoint+"op/syn/user/chatToken/"+uid, pairs).getResult();
+		Gson gson = GsonUtil.getGson();
+		return gson.fromJson(result, CommonResponse.class);
+	}
+
+	public static CommonResponse updateNickname(String uid, String nickName){
+		List<NameValuePair> pairs = new ArrayList<>();
+		pairs.add(new BasicNameValuePair("nickName", nickName));
+		pairs.add(new BasicNameValuePair("appSecret", appSecret));
+		String result = HttpClientUtil.put(endpoint+"op/syn/user/nickname/"+uid, pairs).getResult();
+		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result, CommonResponse.class);
 	}
 	
@@ -91,6 +137,14 @@ public class ChatUtil {
 		pairs.add(new BasicNameValuePair("mobile", mobile));
 		pairs.add(new BasicNameValuePair("appSecret", appSecret));
 		String result = HttpClientUtil.put(endpoint+"op/syn/user/mobile/"+uid, pairs).getResult();
+		Gson gson = GsonUtil.getGson();
+		return gson.fromJson(result, CommonResponse.class);
+	}
+
+	public static CommonResponse deleteUser(String uids){
+		List<NameValuePair> pairs = new ArrayList<>();
+		pairs.add(new BasicNameValuePair("appSecret", appSecret));
+		String result = HttpClientUtil.put(endpoint+"op/syn/user/"+uids, pairs).getResult();
 		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result, CommonResponse.class);
 	}
