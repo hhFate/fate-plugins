@@ -98,7 +98,6 @@ public class ChatUtil {
 		List<NameValuePair> pairs = new ArrayList<>();
 		pairs.add(new BasicNameValuePair("chatToken", chatToken));
 		pairs.add(new BasicNameValuePair("appSecret", appSecret));
-		System.out.println(endpoint);
 		String result = HttpClientUtil.put(endpoint+"op/syn/user/chatToken/"+uid, pairs).getResult();
 		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result, CommonResponse.class);
