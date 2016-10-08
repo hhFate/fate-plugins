@@ -67,6 +67,12 @@
 			<groupId>com.aliyun.opensearch</groupId>
 			<artifactId>aliyun-sdk-opensearch</artifactId>
 			<version>2.1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-nop</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.aliyun</groupId>
