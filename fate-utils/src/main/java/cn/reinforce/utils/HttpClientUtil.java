@@ -13,6 +13,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
@@ -78,7 +79,7 @@ public class HttpClientUtil {
         // Now write the image
         String fullFilePath = parameters.get("file_path");
         if (!Strings.isEmpty(fullFilePath)) {
-            multipartEntity.addBinaryBody("uploadFile", new File(fullFilePath));
+            multipartEntity.addPart("uploadFile", new FileBody(new File(fullFilePath)));
         }
 
         HttpPost request = new HttpPost(url);

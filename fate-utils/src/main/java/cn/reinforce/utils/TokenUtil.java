@@ -19,6 +19,6 @@ public class TokenUtil {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getRandomString(6, 1));
+		System.out.println(getRandomString(16, 2));
 	}
 }
