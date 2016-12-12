@@ -77,6 +77,22 @@ public class Sms {
             this.fee = fee;
         }
 
+        @Override
+        public String toString() {
+            return "Result{" +
+                    "sid='" + sid + '\'' +
+                    ", count=" + count +
+                    ", fee=" + fee +
+                    '}';
+        }
+    }
 
+    @Override
+    public String toString() {
+        return "Sms{" +
+                "reason='" + reason + '\'' +
+                ", error_code=" + error_code +
+                ", result=" + result +
+                '}';
     }
 }
