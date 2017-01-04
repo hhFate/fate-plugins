@@ -6,6 +6,9 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+/**
+ * 友链工具
+ */
 public class FriendLinkUtil {
 
 	private static Logger LOG = Logger.getLogger(FriendLinkUtil.class);

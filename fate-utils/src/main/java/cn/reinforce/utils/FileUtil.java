@@ -3,6 +3,7 @@ package cn.reinforce.utils;
 import java.io.File;
 
 /**
+ * 文件相关方法
  * Created by Fate on 2016/9/6.
  */
 public class FileUtil {

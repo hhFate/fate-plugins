@@ -12,6 +12,9 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 
+/**
+ * 各种加密相关
+ */
 public class EncryptUtil {
 
 	private static final Logger LOG = Logger.getLogger(EncryptUtil.class);

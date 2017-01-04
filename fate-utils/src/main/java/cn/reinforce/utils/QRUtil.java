@@ -15,6 +15,9 @@ import javax.imageio.ImageIO;
 
 import com.google.zxing.common.BitMatrix;
 
+/**
+ * 普通二维码生成工具
+ */
 public class QRUtil {
 
 	private static final int BLACK = 0xFF000000;

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 搜索引擎工具
  * Created by Fate on 2016/7/28.
  */
 public class SpiderUtil {
