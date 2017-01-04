@@ -3,6 +3,12 @@ package cn.reinforce.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * HTML处理工具
+ * @author hhFate
+ * @create 2016-08-17
+ * @since 1.0.0
+ */
 public class HTMLTagUtil{
 
 	

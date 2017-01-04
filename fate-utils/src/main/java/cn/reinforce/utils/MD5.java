@@ -11,6 +11,13 @@ import java.security.MessageDigest;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 
+/**
+ * MD5
+ *
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
+ */
 public class MD5 {
 	
 	private static Logger LOG = Logger.getLogger(MD5.class);

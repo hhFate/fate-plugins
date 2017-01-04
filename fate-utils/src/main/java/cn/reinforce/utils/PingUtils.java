@@ -17,8 +17,9 @@ import org.dom4j.Element;
 /**
  * SEO优化，搜索引擎ping工具
  * 
- * @author fate
- * 
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
  */
 public class PingUtils {
 
@@ -83,8 +84,6 @@ public class PingUtils {
 			String shareURL, String rssURL){
 		HttpPost post = new HttpPost(rpc);
 //		post.addHeader("User-Agent", "request");
-		System.out.println(rpc.substring(rpc.indexOf("http://") + 7,
-				rpc.indexOf(".com/") + 4));
 		post.addHeader("Host", rpc.substring(rpc.indexOf("http://") + 7,
 				rpc.indexOf(".com/") + 4));
 		post.addHeader("Content-Type", "text/xml");

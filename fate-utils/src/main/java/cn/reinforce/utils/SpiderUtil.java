@@ -7,7 +7,9 @@ import java.util.Map;
 
 /**
  * 搜索引擎工具
- * Created by Fate on 2016/7/28.
+ * @author hhFate
+ * @create 2016-07-28
+ * @since 1.0.0
  */
 public class SpiderUtil {
     public static final String[] spider_key = {

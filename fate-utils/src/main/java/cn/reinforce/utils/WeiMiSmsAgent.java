@@ -12,12 +12,13 @@ import org.json.JSONObject;
 /**
  * 微米的短信接口
  * 
- * @author fate
- *
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
  */
-public class SmsAgent {
+public class WeiMiSmsAgent {
 
-	private SmsAgent() {
+	private WeiMiSmsAgent() {
 	}
 
 	public static Map<String, Object> sendSms(String mobiles, String code, int timeout) {

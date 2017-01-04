@@ -20,7 +20,9 @@ import com.google.gson.Gson;
 /**
  * 聚合数据工具类
  *
- * @author Fate
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
  */
 public class JHUtils {
 

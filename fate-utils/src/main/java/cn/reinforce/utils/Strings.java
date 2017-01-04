@@ -7,6 +7,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+/**
+ * 字符串处理工具
+ * @author hhFate
+ * @create 2016-07-28
+ * @since 1.0.0
+ */
 public class Strings {
 
 	/**

@@ -5,6 +5,10 @@ import com.github.stuxuhai.jpinyin.PinyinHelper;
 
 /**
  * 基于JPinyin的工具封装
+ *
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
  */
 public class PinyinUtil {
 

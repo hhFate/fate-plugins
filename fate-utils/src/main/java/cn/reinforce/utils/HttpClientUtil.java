@@ -32,7 +32,9 @@ import java.util.Map;
  * 模拟http请求的工具类
  * 支持get，post，put，delete
  *
- * @author Fate
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
  */
 public class HttpClientUtil {
 

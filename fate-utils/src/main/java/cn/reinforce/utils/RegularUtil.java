@@ -5,7 +5,10 @@ import java.util.regex.Pattern;
 
 /**
  * 一堆正则表达式
- * Created by Fate on 2017/1/4.
+ *
+ * @author hhFate
+ * @create 2017-01-04
+ * @since 1.0.1
  */
 public class RegularUtil {
 

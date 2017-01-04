@@ -8,6 +8,9 @@ import org.jsoup.nodes.Document;
 
 /**
  * 友链工具
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
  */
 public class FriendLinkUtil {
 

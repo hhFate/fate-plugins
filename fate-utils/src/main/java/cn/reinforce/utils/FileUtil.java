@@ -4,7 +4,9 @@ import java.io.File;
 
 /**
  * 文件相关方法
- * Created by Fate on 2016/9/6.
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
  */
 public class FileUtil {
 

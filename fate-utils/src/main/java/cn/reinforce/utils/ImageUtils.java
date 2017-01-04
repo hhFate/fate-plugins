@@ -28,10 +28,13 @@ import org.apache.log4j.Logger;
 import com.mortennobel.imagescaling.ResampleOp;
 
 /**
- * 图片处理工具类：<br>
+ * 图片处理工具类：
  * 功能：缩放图像、切割图像、图像类型转换、彩色转黑白、文字水印、图片水印等
- * 
- * @author Administrator
+ *
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
+ *
  */
 public class ImageUtils {
 

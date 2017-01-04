@@ -14,6 +14,9 @@ import org.apache.log4j.Logger;
 
 /**
  * 各种加密相关
+ * @author hhFate
+ * @create
+ * @since
  */
 public class EncryptUtil {
 

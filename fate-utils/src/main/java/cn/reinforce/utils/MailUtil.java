@@ -3,7 +3,13 @@ package cn.reinforce.utils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * Email相关工具类
+ *
+ * @author hhFate
+ * @create 2016-09-06
+ * @since 1.0.0
+ */
 public class MailUtil {
 
 	

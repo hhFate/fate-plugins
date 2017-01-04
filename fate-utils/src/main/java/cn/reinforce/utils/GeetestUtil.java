@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 极验验证的二次验证
- * Created by Fate on 2016/8/17.
+ * @author hhFate
+ * @create 2016-08-17
+ * @since 1.0.0
  */
 public class GeetestUtil {
 
