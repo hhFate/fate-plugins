@@ -1,5 +1,7 @@
 package cn.reinforce.utils.entity.juhe;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * 对应短信API服务
  *
@@ -7,92 +9,52 @@ package cn.reinforce.utils.entity.juhe;
  */
 public class Sms {
 
-    private String reason;
+    /**
+     * 短信的id
+     */
+    private String sid;
 
-    private long error_code;
+    /**
+     * 发送数量
+     */
+    private int count;
 
-    private Result result;
+    /**
+     * 扣款条数
+     */
+    private int fee;
 
-    public String getReason() {
-        return reason;
+    public String getSid() {
+        return sid;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setSid(String sid) {
+        this.sid = sid;
     }
 
-    public long getError_code() {
-        return error_code;
+    public int getCount() {
+        return count;
     }
 
-    public void setError_code(long error_code) {
-        this.error_code = error_code;
+    public void setCount(int count) {
+        this.count = count;
     }
 
-    public Result getResult() {
-        return result;
+    public int getFee() {
+        return fee;
     }
 
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
-    public class Result {
-        /**
-         * 短信的id
-         */
-        private String sid;
-
-        /**
-         * 发送数量
-         */
-        private int count;
-
-        /**
-         * 扣款条数
-         */
-        private int fee;
-
-        public String getSid() {
-            return sid;
-        }
-
-        public void setSid(String sid) {
-            this.sid = sid;
-        }
-
-        public int getCount() {
-            return count;
-        }
-
-        public void setCount(int count) {
-            this.count = count;
-        }
-
-        public int getFee() {
-            return fee;
-        }
-
-        public void setFee(int fee) {
-            this.fee = fee;
-        }
-
-        @Override
-        public String toString() {
-            return "Result{" +
-                    "sid='" + sid + '\'' +
-                    ", count=" + count +
-                    ", fee=" + fee +
-                    '}';
-        }
+    public void setFee(int fee) {
+        this.fee = fee;
     }
 
     @Override
     public String toString() {
-        return "Sms{" +
-                "reason='" + reason + '\'' +
-                ", error_code=" + error_code +
-                ", result=" + result +
+        return "Result{" +
+                "sid='" + sid + '\'' +
+                ", count=" + count +
+                ", fee=" + fee +
                 '}';
     }
+
 }

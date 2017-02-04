@@ -16,7 +16,13 @@ public class JuheResponse {
 	private String error_code;
 	
 	@Expose
-	private Map<String, Object> result;
+	private Object result;
+
+	private IP ip;
+
+	private Sms sms;
+
+	private Weather weather;
 
 	public int getResultcode() {
 		return resultcode;
@@ -34,11 +40,11 @@ public class JuheResponse {
 		this.reason = reason;
 	}
 
-	public Map<String, Object> getResult() {
+	public Object getResult() {
 		return result;
 	}
 
-	public void setResult(Map<String, Object> result) {
+	public void setResult(Object result) {
 		this.result = result;
 	}
 
@@ -49,5 +55,28 @@ public class JuheResponse {
 	public void setError_code(String error_code) {
 		this.error_code = error_code;
 	}
-	
+
+	public IP getIp() {
+		return ip;
+	}
+
+	public void setIp(IP ip) {
+		this.ip = ip;
+	}
+
+	public Sms getSms() {
+		return sms;
+	}
+
+	public void setSms(Sms sms) {
+		this.sms = sms;
+	}
+
+	public Weather getWeather() {
+		return weather;
+	}
+
+	public void setWeather(Weather weather) {
+		this.weather = weather;
+	}
 }

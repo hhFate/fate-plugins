@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.reinforce.utils.entity.juhe.IP;
 import cn.reinforce.utils.entity.juhe.JuheResponse;
 import cn.reinforce.utils.entity.juhe.Sms;
 import cn.reinforce.utils.entity.juhe.Weather;
@@ -40,7 +41,7 @@ public class JHUtils {
      * @param templeteId 短信模版id
      * @return 错误码
      */
-    public static Sms sendSms(String mobile, String code, int timeout, String key, int templeteId) {
+    public static JuheResponse sendSms(String mobile, String code, int timeout, String key, int templeteId) {
         List<NameValuePair> pair = new ArrayList<>();
         pair.add(new BasicNameValuePair("mobile", mobile));
         pair.add(new BasicNameValuePair("tpl_id", Integer.toString(templeteId)));
@@ -49,16 +50,23 @@ public class JHUtils {
 
         String result = HttpClientUtil.post("http://v.juhe.cn/sms/send", pair).getResult();
         Gson gson = new Gson();
-        Sms sms = gson.fromJson(result, Sms.class);
-        return sms;
+
+        JuheResponse response = gson.fromJson(result, JuheResponse.class);
+
+        Sms sms = gson.fromJson(gson.toJson(response.getResult()), Sms.class);
+
+        response.setSms(sms);
+
+        return response;
     }
 
     /**
      * 评论提醒通知
      *
      * @param mobile     手机号
-     * @param code       验证码
-     * @param timeout    超时时间，分钟
+     * @param title
+     * @param content
+     * @param key
      * @param templeteId 短信模版id
      * @return 错误码
      */
@@ -71,7 +79,11 @@ public class JHUtils {
 
         String result = HttpClientUtil.post("http://v.juhe.cn/sms/send", pair).getResult();
         Gson gson = new Gson();
-        Sms sms = gson.fromJson(result, Sms.class);
+        JuheResponse response = gson.fromJson(result, JuheResponse.class);
+
+        Sms sms = gson.fromJson(gson.toJson(response.getResult()), Sms.class);
+
+        response.setSms(sms);
         return sms;
     }
 
@@ -93,7 +105,11 @@ public class JHUtils {
 
         String result = HttpClientUtil.post("http://v.juhe.cn/sms/send", pair).getResult();
         Gson gson = new Gson();
-        Sms sms = gson.fromJson(result, Sms.class);
+        JuheResponse response = gson.fromJson(result, JuheResponse.class);
+
+        Sms sms = gson.fromJson(gson.toJson(response.getResult()), Sms.class);
+
+        response.setSms(sms);
         return sms;
     }
 
@@ -111,8 +127,11 @@ public class JHUtils {
         pair.add(new BasicNameValuePair("key", "f2f2be1d2581c633dbff0ed0099d4f6a"));
         String result = HttpClientUtil.post("http://v.juhe.cn/weather/ip", pair).getResult();
         Gson gson = new Gson();
-        Weather weather = gson.fromJson(result, Weather.class);
+        JuheResponse response = gson.fromJson(result, JuheResponse.class);
 
+        Weather weather = gson.fromJson(gson.toJson(response.getResult()), Weather.class);
+
+        response.setWeather(weather);
         return weather;
     }
 
@@ -126,8 +145,8 @@ public class JHUtils {
     public static Map<String, Object> weather2(String ip) {
         Map<String, Object> map = new HashMap<>();
 
-        String city = (String) ip(ip).getResult().get("area");
-        city = "上海";
+        String city = ip(ip).getIp().getArea();
+        city = "苏州市";
         try {
             city = URLEncoder.encode(city, "utf-8");
         } catch (UnsupportedEncodingException e) {
@@ -150,12 +169,13 @@ public class JHUtils {
         Gson gson = GsonUtil.getGson();
         JuheResponse response = gson.fromJson(result, JuheResponse.class);
 
-        System.out.println(response.getResult());
-
+        IP ip1 = gson.fromJson(gson.toJson(response.getResult()), IP.class);
+        System.out.println(ip1);
+        response.setIp(ip1);
         return response;
     }
 
     public static void main(String[] args) {
-        weather("221.6.89.54");
+        weather2("221.6.89.54");
     }
 }
