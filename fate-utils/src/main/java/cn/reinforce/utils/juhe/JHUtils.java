@@ -1,22 +1,19 @@
-package cn.reinforce.utils;
+package cn.reinforce.utils.juhe;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import cn.reinforce.utils.entity.juhe.IP;
-import cn.reinforce.utils.entity.juhe.JuheResponse;
-import cn.reinforce.utils.entity.juhe.Sms;
-import cn.reinforce.utils.entity.juhe.Weather;
+import cn.reinforce.utils.GsonUtil;
+import cn.reinforce.utils.HttpClientUtil;
+import cn.reinforce.utils.juhe.entity.IP;
+import cn.reinforce.utils.juhe.entity.JuheResponse;
+import cn.reinforce.utils.juhe.entity.Sms;
+import cn.reinforce.utils.juhe.entity.Weather;
+import com.google.gson.Gson;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
 
-import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 聚合数据工具类
@@ -121,10 +118,10 @@ public class JHUtils {
      * @return
      * @throws JSONException
      */
-    public static Weather weather(String ip) {
+    public static Weather weather(String ip, String key) {
         List<NameValuePair> pair = new ArrayList<>();
         pair.add(new BasicNameValuePair("ip", ip));
-        pair.add(new BasicNameValuePair("key", "f2f2be1d2581c633dbff0ed0099d4f6a"));
+        pair.add(new BasicNameValuePair("key", key));
         String result = HttpClientUtil.post("http://v.juhe.cn/weather/ip", pair).getResult();
         Gson gson = new Gson();
         JuheResponse response = gson.fromJson(result, JuheResponse.class);
@@ -142,30 +139,29 @@ public class JHUtils {
      * @return
      * @throws JSONException
      */
-    public static Map<String, Object> weather2(String ip) {
-        Map<String, Object> map = new HashMap<>();
-
-        String city = ip(ip).getIp().getArea();
-        city = "苏州市";
-        try {
-            city = URLEncoder.encode(city, "utf-8");
-        } catch (UnsupportedEncodingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        String result = HttpClientUtil.get("http://op.juhe.cn/onebox/weather/query?cityname=" + city + "&key=e6189b8525a1355dbacd219618359a46").getResult();
-        System.out.println(result);
-        Gson gson = GsonUtil.getGson();
-        JuheResponse response = gson.fromJson(result, JuheResponse.class);
-
-        System.out.println(response.getResult());
-
-        return map;
-    }
-
-    public static JuheResponse ip(String ip) {
-        String result = HttpClientUtil.get("http://apis.juhe.cn/ip/ip2addr?ip=" + ip + "&key=acd6918ff5a3b87ed1119c0df7d61408").getResult();
+//    public static Map<String, Object> weather2(String ip, String key) {
+//        Map<String, Object> map = new HashMap<>();
+//
+//        String city = ip(ip).getIp().getArea();
+//        city = "苏州市";
+//        try {
+//            city = URLEncoder.encode(city, "utf-8");
+//        } catch (UnsupportedEncodingException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//
+//        String result = HttpClientUtil.get("http://op.juhe.cn/onebox/weather/query?cityname=" + city + "&key="+key).getResult();
+//        System.out.println(result);
+//        Gson gson = GsonUtil.getGson();
+//        JuheResponse response = gson.fromJson(result, JuheResponse.class);
+//
+//        System.out.println(response.getResult());
+//
+//        return map;
+//    }
+    public static JuheResponse ip(String ip, String key) {
+        String result = HttpClientUtil.get("http://apis.juhe.cn/ip/ip2addr?ip=" + ip + "&key=" + key).getResult();
         Gson gson = GsonUtil.getGson();
         JuheResponse response = gson.fromJson(result, JuheResponse.class);
 
@@ -176,6 +172,6 @@ public class JHUtils {
     }
 
     public static void main(String[] args) {
-        weather2("221.6.89.54");
+        ip("117.82.202.59", "acd6918ff5a3b87ed1119c0df7d61408");
     }
 }

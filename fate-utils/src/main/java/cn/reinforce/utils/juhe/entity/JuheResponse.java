@@ -1,6 +1,4 @@
-package cn.reinforce.utils.entity.juhe;
-
-import java.util.Map;
+package cn.reinforce.utils.juhe.entity;
 
 import com.google.gson.annotations.Expose;
 
