@@ -1,4 +1,4 @@
-package cn.reinforce.utils.entity.juhe;
+package cn.reinforce.utils.juhe.entity;
 
 public class Weather {
 
