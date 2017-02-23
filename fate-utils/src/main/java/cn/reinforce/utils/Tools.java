@@ -225,9 +225,9 @@ public class Tools {
 	 * @param token
 	 * @param original
 	 */
-	public static void baiduUrls(String urls, String site, String token, boolean original){
+	public static void baiduUrls(String urls, String site, String action, String token, boolean original){
 		CloseableHttpClient httpclient = HttpClients.createDefault();
-		String url = "http://data.zz.baidu.com/urls?site="+site+"&token="+token+(original?"&type=original":"");
+		String url = "http://data.zz.baidu.com/"+action+"?site="+site+"&token="+token+(original?"&type=original":"");
 		HttpPost post = new HttpPost(url);
 		
 		try {
