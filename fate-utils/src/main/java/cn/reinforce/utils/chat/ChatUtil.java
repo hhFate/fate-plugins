@@ -56,7 +56,7 @@ public class ChatUtil {
 		pairs.add(new BasicNameValuePair("name", name));
 		pairs.add(new BasicNameValuePair("desc", desc));
 		pairs.add(new BasicNameValuePair("appSecret", appSecret));
-		String result = HttpClientUtil.put(endpoint+"op/syn/user/name/"+id, pairs).getResult();
+		String result = HttpClientUtil.put(endpoint+"op/syn/dept/name/"+id, pairs).getResult();
 		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result, CommonResponse.class);
 	}
@@ -64,7 +64,7 @@ public class ChatUtil {
 	public static CommonResponse deleteDept(String id){
 		List<NameValuePair> pairs = new ArrayList<>();
 		pairs.add(new BasicNameValuePair("appSecret", appSecret));
-		String result = HttpClientUtil.put(endpoint+"op/syn/user/"+id, pairs).getResult();
+		String result = HttpClientUtil.put(endpoint+"op/syn/dept/"+id, pairs).getResult();
 		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result, CommonResponse.class);
 	}
