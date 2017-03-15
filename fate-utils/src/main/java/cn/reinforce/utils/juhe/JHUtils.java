@@ -171,6 +171,20 @@ public class JHUtils {
         return response;
     }
 
+    /**
+     * 获取手机号的运营商
+     * @param mobile
+     * @return
+     */
+    public static JuheResponse getMobile(String mobile) {
+        String result = HttpClientUtil.get("http://apis.juhe.cn/mobile/get?phone=" + mobile + "&key=c8836f697b27f0f0ad9ded9cdba95a19").getResult();
+        Gson gson = GsonUtil.getGson();
+        JuheResponse response = gson.fromJson(result, JuheResponse.class);
+
+        System.out.println(response.getResult());
+        return response;
+    }
+
     public static void main(String[] args) {
         ip("117.82.202.59", "acd6918ff5a3b87ed1119c0df7d61408");
     }

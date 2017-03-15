@@ -58,7 +58,11 @@ public class Line {
 
         private List<Double> data = new ArrayList<>();
 
+        private ItemStyle itemStyle;
+
         private AreaStyle areaStyle;
+
+        private LineStyle lineStyle;
 
         private MarkLine markLine;
 
@@ -109,6 +113,22 @@ public class Line {
         public void setMarkLine(MarkLine markLine) {
             this.markLine = markLine;
         }
+
+        public LineStyle getLineStyle() {
+            return lineStyle;
+        }
+
+        public void setLineStyle(LineStyle lineStyle) {
+            this.lineStyle = lineStyle;
+        }
+
+        public ItemStyle getItemStyle() {
+            return itemStyle;
+        }
+
+        public void setItemStyle(ItemStyle itemStyle) {
+            this.itemStyle = itemStyle;
+        }
     }
 
     public class AreaStyle {
@@ -130,6 +150,40 @@ public class Line {
 
         public void setEmphasis(Style emphasis) {
             this.emphasis = emphasis;
+        }
+    }
+
+    public class ItemStyle {
+        private Style normal;
+
+        private Style emphasis;
+
+        public Style getNormal() {
+            return normal;
+        }
+
+        public void setNormal(Style normal) {
+            this.normal = normal;
+        }
+
+        public Style getEmphasis() {
+            return emphasis;
+        }
+
+        public void setEmphasis(Style emphasis) {
+            this.emphasis = emphasis;
+        }
+    }
+
+    public class LineStyle {
+        private Style normal;
+
+        public Style getNormal() {
+            return normal;
+        }
+
+        public void setNormal(Style normal) {
+            this.normal = normal;
         }
     }
 
