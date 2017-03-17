@@ -58,6 +58,8 @@ public class Line {
 
         private List<Double> data = new ArrayList<>();
 
+        private Label label;
+
         private ItemStyle itemStyle;
 
         private AreaStyle areaStyle;
@@ -129,31 +131,17 @@ public class Line {
         public void setItemStyle(ItemStyle itemStyle) {
             this.itemStyle = itemStyle;
         }
+
+        public Label getLabel() {
+            return label;
+        }
+
+        public void setLabel(Label label) {
+            this.label = label;
+        }
     }
 
     public class AreaStyle {
-        private Style normal;
-
-        private Style emphasis;
-
-        public Style getNormal() {
-            return normal;
-        }
-
-        public void setNormal(Style normal) {
-            this.normal = normal;
-        }
-
-        public Style getEmphasis() {
-            return emphasis;
-        }
-
-        public void setEmphasis(Style emphasis) {
-            this.emphasis = emphasis;
-        }
-    }
-
-    public class ItemStyle {
         private Style normal;
 
         private Style emphasis;
@@ -184,18 +172,6 @@ public class Line {
 
         public void setNormal(Style normal) {
             this.normal = normal;
-        }
-    }
-
-    public class Style{
-        private String color;
-
-        public String getColor() {
-            return color;
-        }
-
-        public void setColor(String color) {
-            this.color = color;
         }
     }
 

@@ -148,14 +148,25 @@ public class ChatUtil {
 		return gson.fromJson(result, CommonResponse.class);
 	}
 	
-	public static CommonResponse createGroup(String creator, String groupName, String desc, String members, String endpoint, String appSecret){
+	public static CommonResponse createGroup(String creator, String groupName, String desc, String members, String thirdId){
 		List<NameValuePair> pair = new ArrayList<>();
 		pair.add(new BasicNameValuePair("creator", creator));
 		pair.add(new BasicNameValuePair("groupName", groupName));
 		pair.add(new BasicNameValuePair("desc", desc));
 		pair.add(new BasicNameValuePair("members", members));
+		pair.add(new BasicNameValuePair("thirdId", thirdId));
 		pair.add(new BasicNameValuePair("appSecret", appSecret));
-		HttpResult result = HttpClientUtil.post(endpoint+"/op/sysn/group/", pair);
+		HttpResult result = HttpClientUtil.post(endpoint+"/op/syn/group/", pair);
+		Gson gson = GsonUtil.getGson();
+		return gson.fromJson(result.getResult(), CommonResponse.class);
+	}
+
+	public static CommonResponse addUserToGroup(String uid, String thirdId){
+		List<NameValuePair> pair = new ArrayList<>();
+		pair.add(new BasicNameValuePair("synId", uid));
+		pair.add(new BasicNameValuePair("thirdId", thirdId));
+		pair.add(new BasicNameValuePair("appSecret", appSecret));
+		HttpResult result = HttpClientUtil.post(endpoint+"/op/syn/group/user", pair);
 		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result.getResult(), CommonResponse.class);
 	}

@@ -4,6 +4,7 @@ import cn.reinforce.utils.GsonUtil;
 import cn.reinforce.utils.HttpClientUtil;
 import cn.reinforce.utils.juhe.entity.IP;
 import cn.reinforce.utils.juhe.entity.JuheResponse;
+import cn.reinforce.utils.juhe.entity.Mobile;
 import cn.reinforce.utils.juhe.entity.Sms;
 import cn.reinforce.utils.juhe.entity.Weather;
 import com.google.gson.Gson;
@@ -180,8 +181,9 @@ public class JHUtils {
         String result = HttpClientUtil.get("http://apis.juhe.cn/mobile/get?phone=" + mobile + "&key=c8836f697b27f0f0ad9ded9cdba95a19").getResult();
         Gson gson = GsonUtil.getGson();
         JuheResponse response = gson.fromJson(result, JuheResponse.class);
-
+        Mobile m = gson.fromJson(gson.toJson(response.getResult()), Mobile.class);
         System.out.println(response.getResult());
+        response.setMobile(m);
         return response;
     }
 

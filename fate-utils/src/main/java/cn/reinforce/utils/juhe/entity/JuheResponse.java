@@ -22,6 +22,8 @@ public class JuheResponse {
 
 	private Weather weather;
 
+	private Mobile mobile;
+
 	public int getResultcode() {
 		return resultcode;
 	}
@@ -76,5 +78,13 @@ public class JuheResponse {
 
 	public void setWeather(Weather weather) {
 		this.weather = weather;
+	}
+
+	public Mobile getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(Mobile mobile) {
+		this.mobile = mobile;
 	}
 }
