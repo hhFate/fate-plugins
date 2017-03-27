@@ -35,7 +35,11 @@ public class Pie {
 		this.series = series;
 	}
 
-	public void newSeries(String name, int value){
+	public void newSeries(String name, int value, boolean filterZero){
+		//过滤0数据
+		if(filterZero&&value==0){
+			return;
+		}
 		Series s = new Series();
 		s.setName(name);
 		s.setValue(value);
