@@ -79,7 +79,7 @@ public class OSSUtil {
      * @param folder
      * @return
      */
-    public PutObjectResult simpleUpload(String bucketName,
+    public static PutObjectResult simpleUpload(String bucketName,
                                         MultipartFile clientFile, String folder, String fileName) {
         fileName = folder + fileName;
         PutObjectResult result = null;
@@ -95,7 +95,7 @@ public class OSSUtil {
         return result;
     }
 
-    public PutObjectResult simpleUpload(String bucketName, File file, String folder, String fileName) {
+    public static PutObjectResult simpleUpload(String bucketName, File file, String folder, String fileName) {
         fileName = folder + fileName;
         PutObjectResult result = null;
         ObjectMetadata meta = new ObjectMetadata();
@@ -105,7 +105,7 @@ public class OSSUtil {
     }
 
     
-    public PutObjectResult byteUpload(String bucketName, byte[] file, String folder, String fileName) {
+    public static PutObjectResult byteUpload(String bucketName, byte[] file, String folder, String fileName) {
         fileName = folder + fileName;
         PutObjectResult result = null;
         fileName = folder + fileName;
@@ -114,7 +114,7 @@ public class OSSUtil {
     }
 
     
-    public PutObjectResult uplaodOnlineFileToOSS(String url, String bucketName, String folder) {
+    public static PutObjectResult uplaodOnlineFileToOSS(String url, String bucketName, String folder) {
         String fileName = url.substring(url.lastIndexOf("/") + 1);
         fileName = folder + fileName;
         PutObjectResult result = null;
@@ -137,7 +137,7 @@ public class OSSUtil {
     }
 
     
-    public PutObjectResult headIconUpload(String bucketName,
+    public static PutObjectResult headIconUpload(String bucketName,
                                           File file, String folder, String fileName) {
         fileName = folder + fileName;
         PutObjectResult result = null;
@@ -171,7 +171,7 @@ public class OSSUtil {
      * @return
      */
     
-    public Map<String, Object> multipartUpload(final String bucketName,
+    public static Map<String, Object> multipartUpload(final String bucketName,
                                                MultipartFile partFile, String folder, String filename) {
         ExecutorService pool = Executors.newCachedThreadPool();
         long partSize;
@@ -320,7 +320,7 @@ public class OSSUtil {
      * @return
      */
     
-    public boolean completeMultipartUpload(String bucketName, String fileName,
+    public static boolean completeMultipartUpload(String bucketName, String fileName,
                                            List<PartETag> partETags, String uploadId) {
         CompleteMultipartUploadRequest completeMultipartUploadRequest = new CompleteMultipartUploadRequest(
                 bucketName, fileName, uploadId, partETags);
@@ -347,7 +347,7 @@ public class OSSUtil {
      * @param uploadId
      */
     
-    public void abortMultipartUpload(String fileName,
+    public static void abortMultipartUpload(String fileName,
                                      String uploadId) {
         AbortMultipartUploadRequest abortMultipartUploadRequest = new AbortMultipartUploadRequest(Aliyun.INSTANCE.getOssBucket(), fileName, uploadId);
 
@@ -356,7 +356,7 @@ public class OSSUtil {
     }
 
     
-    public String generatePresignedUrl(String key, Date expiration) {
+    public static String generatePresignedUrl(String key, Date expiration) {
         String url = Aliyun.INSTANCE.getOSSClient().generatePresignedUrl(Aliyun.INSTANCE.getOssBucket(), key, expiration).toString();
         if (Aliyun.INSTANCE.getOssUrl() != null)
             url = url.replace(Aliyun.INSTANCE.getOssBucket() + "." + Aliyun.INSTANCE.getOssEndpoint(), Aliyun.INSTANCE.getOssUrl());
@@ -364,7 +364,7 @@ public class OSSUtil {
     }
 
     
-    public Map<String, Object> deleteObject(String key) {
+    public static Map<String, Object> deleteObject(String key) {
         Map<String, Object> map = new HashMap<>();
         try {
             key = java.net.URLDecoder.decode(key, "utf-8");
@@ -399,7 +399,7 @@ public class OSSUtil {
     }
 
     
-    public boolean newFolder(String folderName, String curFolder) {
+    public static boolean newFolder(String folderName, String curFolder) {
         String key = curFolder + folderName + "/";
         ByteArrayInputStream in = null;
         try {
@@ -425,18 +425,18 @@ public class OSSUtil {
     }
 
     
-    public MultipartUploadListing listMultipartUploads() {
+    public static MultipartUploadListing listMultipartUploads() {
         ListMultipartUploadsRequest listMultipartUploadsRequest = new ListMultipartUploadsRequest(Aliyun.INSTANCE.getOssBucket());
         return Aliyun.INSTANCE.getOSSClient().listMultipartUploads(listMultipartUploadsRequest);
     }
 
     
-    public List<Bucket> listBuckets() {
+    public static List<Bucket> listBuckets() {
         return Aliyun.INSTANCE.getOSSClient().listBuckets();
     }
 
     
-    public ObjectListing getList(String dir) {
+    public static ObjectListing getList(String dir) {
 //		if(dir.equals(""))
 //			dir="/";
         // 构造ListObjectsRequest请求
@@ -456,13 +456,13 @@ public class OSSUtil {
     }
 
     
-    public int count(String dir) {
+    public static int count(String dir) {
         ObjectListing list = getList(dir);
         return list.getObjectSummaries().size();
     }
 
     
-    public PartListing listParts(String key, String uploadId) {
+    public static PartListing listParts(String key, String uploadId) {
         ListPartsRequest listPartsRequest = new ListPartsRequest(Aliyun.INSTANCE.getOssBucket(), key, uploadId);
         return Aliyun.INSTANCE.getOSSClient().listParts(listPartsRequest);
     }
@@ -471,7 +471,7 @@ public class OSSUtil {
      * 将所有OSS中的文件下载到本地，切换存储模式的时候用
      */
     
-    public void downloadAll() {
+    public static void downloadAll() {
         ObjectListing objectListing = getList("/");
         for (OSSObjectSummary objectSummary : objectListing.getObjectSummaries()) {
             // 新建GetObjectRequest
@@ -484,7 +484,7 @@ public class OSSUtil {
     }
 
     
-    public void copyObject(String srcKey, String destKey) {
+    public static void copyObject(String srcKey, String destKey) {
         // 拷贝Object
         CopyObjectResult result = Aliyun.INSTANCE.getOSSClient().copyObject(Aliyun.INSTANCE.getOssBucket(), srcKey, Aliyun.INSTANCE.getOssBucket(), destKey);
 
@@ -493,7 +493,7 @@ public class OSSUtil {
     }
 
     
-    public void setReferer(String referer, boolean allowEmptyReferer) {
+    public static void setReferer(String referer, boolean allowEmptyReferer) {
         List<String> refererList = new ArrayList<String>();
         String[] referers = referer.split("\n");
         for (String s : referers) {
@@ -504,7 +504,7 @@ public class OSSUtil {
     }
 
     
-    public List<String> getReferer() {
+    public static List<String> getReferer() {
         if (Aliyun.INSTANCE.getOSSClient() != null) {
             BucketReferer bucketReferer = Aliyun.INSTANCE.getOSSClient().getBucketReferer(Aliyun.INSTANCE.getOssBucket());
             return bucketReferer.getRefererList();
@@ -513,7 +513,7 @@ public class OSSUtil {
     }
 
     
-    public boolean isAllowEmptyReferer() {
+    public static boolean isAllowEmptyReferer() {
         if (Aliyun.INSTANCE.getOSSClient() != null) {
             BucketReferer bucketReferer = Aliyun.INSTANCE.getOSSClient().getBucketReferer(Aliyun.INSTANCE.getOssBucket());
             return bucketReferer.isAllowEmptyReferer();
