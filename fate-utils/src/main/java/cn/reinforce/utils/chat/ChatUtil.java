@@ -89,7 +89,7 @@ public class ChatUtil {
 		List<NameValuePair> pairs = new ArrayList<>();
 		pairs.add(new BasicNameValuePair("deptId", deptId));
 		pairs.add(new BasicNameValuePair("appSecret", appSecret));
-		String result = HttpClientUtil.put(endpoint+"op/syn/user/nickname/"+uid, pairs).getResult();
+		String result = HttpClientUtil.put(endpoint+"op/syn/user/user/dept/"+uid, pairs).getResult();
 		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result, CommonResponse.class);
 	}
