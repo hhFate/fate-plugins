@@ -103,9 +103,9 @@ public class ChatUtil {
 		return gson.fromJson(result, CommonResponse.class);
 	}
 
-	public static CommonResponse updateNickname(String uid, String nickName){
+	public static CommonResponse updateNickname(String uid, String nickname){
 		List<NameValuePair> pairs = new ArrayList<>();
-		pairs.add(new BasicNameValuePair("nickName", nickName));
+		pairs.add(new BasicNameValuePair("nickname", nickname));
 		pairs.add(new BasicNameValuePair("appSecret", appSecret));
 		String result = HttpClientUtil.put(endpoint+"op/syn/user/nickname/"+uid, pairs).getResult();
 		Gson gson = GsonUtil.getGson();
