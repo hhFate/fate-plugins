@@ -170,4 +170,12 @@ public class ChatUtil {
 		Gson gson = GsonUtil.getGson();
 		return gson.fromJson(result.getResult(), CommonResponse.class);
 	}
+
+	public static String getStates(String synIds){
+		List<NameValuePair> pair = new ArrayList<>();
+		pair.add(new BasicNameValuePair("synIds", synIds));
+		pair.add(new BasicNameValuePair("appSecret", appSecret));
+		HttpResult result = HttpClientUtil.post(endpoint+"/op/syn/users/state", pair);
+		return result.getResult();
+	}
 }
