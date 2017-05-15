@@ -45,6 +45,18 @@ public class EncryptUtil {
 	}
 
 	/**
+	 * 用户名加盐的方式
+	 * @param username
+	 * @param pwd
+	 * @param salt
+	 * @return
+	 */
+	public static String pwd2(String username, String pwd, String salt) {
+		return EncryptUtil.md5(username + pwd + salt);
+	}
+
+
+	/**
 	 * md5或者sha-1加密
 	 * 
 	 * @param inputText
