@@ -27,6 +27,20 @@ public class RegularUtil {
     }
 
     /**
+     * 是否是座机
+     * @param tel
+     * @return
+     */
+    public static boolean isTel(String tel){
+        if(Strings.isEmpty(tel)){
+            return false;
+        }
+        Pattern pattern = Pattern.compile("^[0-9]{3,4}-[0-9]{8}$");
+        Matcher matcher = pattern.matcher(tel);
+        return !matcher.find();
+    }
+
+    /**
      * 检查邮箱格式
      * @param email
      * @return
