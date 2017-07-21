@@ -12,17 +12,17 @@ import java.util.regex.Pattern;
 
 /**
  * 日期工具
+ *
  * @author hhFate
  * @create 2016-07-28
  * @since 1.0.0
  */
 public class Times {
 
-	/**
+    /**
      * 判断一年是否为闰年，如果给定年份小于1全部为 false
-     * 
-     * @param year
-     *            年份，比如 2012 就是二零一二年
+     *
+     * @param year 年份，比如 2012 就是二零一二年
      * @return 给定年份是否是闰年
      */
     public static boolean leapYear(int year) {
@@ -33,9 +33,8 @@ public class Times {
 
     /**
      * 判断某年（不包括自己）之前有多少个闰年
-     * 
-     * @param year
-     *            年份，比如 2012 就是二零一二年
+     *
+     * @param year 年份，比如 2012 就是二零一二年
      * @return 闰年的个数
      */
     public static int countLeapYear(int year) {
@@ -46,13 +45,12 @@ public class Times {
 
     /**
      * 将一个秒数（天中），转换成一个如下格式的数组:
-     * 
+     * <p>
      * <pre>
      * [0-23][0-59[-059]
      * </pre>
-     * 
-     * @param sec
-     *            秒数
+     *
+     * @param sec 秒数
      * @return 时分秒的数组
      */
     public static int[] T(int sec) {
@@ -65,9 +63,8 @@ public class Times {
 
     /**
      * 将一个时间字符串，转换成一个一天中的绝对秒数
-     * 
-     * @param ts
-     *            时间字符串，符合格式 "HH:mm:ss"
+     *
+     * @param ts 时间字符串，符合格式 "HH:mm:ss"
      * @return 一天中的绝对秒数
      */
     public static int T(String ts) {
@@ -78,12 +75,12 @@ public class Times {
             int ss = Integer.parseInt(tss[2]);
             return hh * 3600 + mm * 60 + ss;
         }
-        throw new RuntimeException("Wrong format of time string "+ts);
+        throw new RuntimeException("Wrong format of time string " + ts);
     }
 
     /**
      * 返回服务器当前时间
-     * 
+     *
      * @return 服务器当前时间
      */
     public static Date now() {
@@ -91,20 +88,18 @@ public class Times {
     }
 
     private static Pattern _P_TIME = Pattern.compile("^((\\d{2,4})([/\\\\-])(\\d{1,2})([/\\\\-])(\\d{1,2}))?"
-                                                     + "(([ T])?"
-                                                     + "(\\d{1,2})(:)(\\d{1,2})(:)(\\d{1,2})"
-                                                     + "(([.])"
-                                                     + "(\\d{1,}))?)?"
-                                                     + "(([+-])(\\d{1,2})(:\\d{1,2})?)?"
-                                                     + "$");
+            + "(([ T])?"
+            + "(\\d{1,2})(:)(\\d{1,2})(:)(\\d{1,2})"
+            + "(([.])"
+            + "(\\d{1,}))?)?"
+            + "(([+-])(\\d{1,2})(:\\d{1,2})?)?"
+            + "$");
 
     /**
      * 根据默认时区计算时间字符串的绝对毫秒数
-     * 
-     * @param ds
-     *            时间字符串
+     *
+     * @param ds 时间字符串
      * @return 绝对毫秒数
-     * 
      * @see #ams(String, TimeZone)
      */
     public static long ams(String ds) {
@@ -114,9 +109,9 @@ public class Times {
     /**
      * 根据字符串得到相对于 "UTC 1970-01-01 00:00:00" 的绝对毫秒数。
      * 本函数假想给定的时间字符串是本地时间。所以计算出来结果后，还需要减去时差
-     * 
+     * <p>
      * 支持的时间格式字符串为:
-     * 
+     * <p>
      * <pre>
      * yyyy-MM-dd HH:mm:ss
      * yyyy-MM-dd HH:mm:ss.SSS
@@ -127,13 +122,11 @@ public class Times {
      * HH:mm:ss;
      * HH:mm:ss.SSS;
      * </pre>
-     * 
+     * <p>
      * 时间字符串后面可以跟 +8 或者 +8:00 表示 GMT+8:00 时区。 同理 -9 或者 -9:00 表示 GMT-9:00 时区
-     * 
-     * @param ds
-     *            时间字符串
-     * @param tz
-     *            你给定的时间字符串是属于哪个时区的
+     *
+     * @param ds 时间字符串
+     * @param tz 你给定的时间字符串是属于哪个时区的
      * @return 时间
      * @see #_P_TIME
      */
@@ -167,13 +160,13 @@ public class Times {
              * // 计算 return MS - tz.getRawOffset() - tz.getDSTSavings();
              */
             String str = String.format("%04d-%02d-%02d %02d:%02d:%02d.%03d",
-                                       yy,
-                                       MM,
-                                       dd,
-                                       HH,
-                                       mm,
-                                       ss,
-                                       ms);
+                    yy,
+                    MM,
+                    dd,
+                    HH,
+                    mm,
+                    ss,
+                    ms);
             SimpleDateFormat df = (SimpleDateFormat) DF_DATE_TIME_MS4.clone();
             // 那么用字符串中带有的时区信息 ...
             if (null == tz && !Strings.isBlank(m.group(17))) {
@@ -185,17 +178,16 @@ public class Times {
             // 解析返回
             try {
                 return df.parse(str).getTime();
-            }
-            catch (ParseException e) {
+            } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
         }
-        throw new RuntimeException("Unexpect date format "+ds);
+        throw new RuntimeException("Unexpect date format " + ds);
     }
 
     /**
      * 这个接口函数是 1.b.49 提供了，下一版本将改名为 ams，预计在版本 1.b.51 之后被移除
-     * 
+     *
      * @deprecated since 1.b.49 util 1.b.51
      */
     public static long ms(String ds, TimeZone tz) {
@@ -204,10 +196,8 @@ public class Times {
 
     /**
      * 返回时间对象在一天中的毫秒数
-     * 
-     * @param d
-     *            时间对象
-     * 
+     *
+     * @param d 时间对象
      * @return 时间对象在一天中的毫秒数
      */
     public static long ms(Date d) {
@@ -216,10 +206,8 @@ public class Times {
 
     /**
      * 返回时间对象在一天中的毫秒数
-     * 
-     * @param c
-     *            时间对象
-     * 
+     *
+     * @param c 时间对象
      * @return 时间对象在一天中的毫秒数
      */
     public static int ms(Calendar c) {
@@ -232,7 +220,7 @@ public class Times {
 
     /**
      * 返回当前时间在一天中的毫秒数
-     * 
+     *
      * @return 当前时间在一天中的毫秒数
      */
     public static int ms() {
@@ -241,9 +229,8 @@ public class Times {
 
     /**
      * 根据一个当天的绝对毫秒数，得到一个时间字符串，格式为 "HH:mm:ss.EEE"
-     * 
-     * @param ms
-     *            当天的绝对毫秒数
+     *
+     * @param ms 当天的绝对毫秒数
      * @return 时间字符串
      */
     public static String mss(int ms) {
@@ -254,9 +241,8 @@ public class Times {
 
     /**
      * 根据一个当天的绝对秒数，得到一个时间字符串，格式为 "HH:mm:ss"
-     * 
-     * @param ms
-     *            当天的绝对秒数
+     *
+     * @param ms 当天的绝对秒数
      * @return 时间字符串
      */
     public static String secs(int sec) {
@@ -265,19 +251,17 @@ public class Times {
         int mm = sec / 60;
         sec -= mm * 60;
         return Strings.alignRight(hh, 2, '0')
-               + ":"
-               + Strings.alignRight(mm, 2, '0')
-               + ":"
-               + Strings.alignRight(sec, 2, '0');
+                + ":"
+                + Strings.alignRight(mm, 2, '0')
+                + ":"
+                + Strings.alignRight(sec, 2, '0');
 
     }
 
     /**
      * 返回时间对象在一天中的秒数
-     * 
-     * @param d
-     *            时间对象
-     * 
+     *
+     * @param d 时间对象
      * @return 时间对象在一天中的秒数
      */
     public static int sec(Date d) {
@@ -290,7 +274,7 @@ public class Times {
 
     /**
      * 返回当前时间在一天中的秒数
-     * 
+     *
      * @return 当前时间在一天中的秒数
      */
     public static int sec() {
@@ -299,11 +283,9 @@ public class Times {
 
     /**
      * 根据字符串得到时间对象
-     * 
-     * @param ds
-     *            时间字符串
+     *
+     * @param ds 时间字符串
      * @return 时间
-     * 
      * @see #ams(String)
      */
     public static Date D(String ds) {
@@ -322,13 +304,10 @@ public class Times {
 
     /**
      * 计算一个给定日期，距离 1970 年 1 月 1 日有多少天
-     * 
-     * @param yy
-     *            年，比如 1999，或者 43
-     * @param MM
-     *            月，一月为 1，十二月为 12
-     * @param dd
-     *            日，每月一号为 1
+     *
+     * @param yy 年，比如 1999，或者 43
+     * @param MM 月，一月为 1，十二月为 12
+     * @param dd 日，每月一号为 1
      * @return 距离 1970 年 1 月 1 日的天数
      */
     public static int D1970(int yy, int MM, int dd) {
@@ -363,9 +342,8 @@ public class Times {
 
     /**
      * 根据毫秒数得到时间
-     * 
-     * @param ms
-     *            时间的毫秒数
+     *
+     * @param ms 时间的毫秒数
      * @return 时间
      */
     public static Date D(long ms) {
@@ -374,17 +352,16 @@ public class Times {
 
     /**
      * 根据字符串得到时间
-     * 
+     * <p>
      * <pre>
      * 如果你输入了格式为 "yyyy-MM-dd HH:mm:ss"
      *    那么会匹配到秒
-     *    
+     *
      * 如果你输入格式为 "yyyy-MM-dd"
      *    相当于你输入了 "yyyy-MM-dd 00:00:00"
      * </pre>
-     * 
-     * @param ds
-     *            时间字符串
+     *
+     * @param ds 时间字符串
      * @return 时间
      */
     public static Calendar C(String ds) {
@@ -393,9 +370,8 @@ public class Times {
 
     /**
      * 根据日期对象得到时间
-     * 
-     * @param d
-     *            时间对象
+     *
+     * @param d 时间对象
      * @return 时间
      */
     public static Calendar C(Date d) {
@@ -404,9 +380,8 @@ public class Times {
 
     /**
      * 根据毫秒数得到时间
-     * 
-     * @param ms
-     *            时间的毫秒数
+     *
+     * @param ms 时间的毫秒数
      * @return 时间
      */
     public static Calendar C(long ms) {
@@ -417,9 +392,8 @@ public class Times {
 
     /**
      * 把时间转换成格式为 y-M-d H:m:s.S 的字符串
-     * 
-     * @param d
-     *            时间对象
+     *
+     * @param d 时间对象
      * @return 该时间的字符串形式 , 格式为 y-M-d H:m:s.S
      */
     public static String sDTms(Date d) {
@@ -428,9 +402,8 @@ public class Times {
 
     /**
      * 把时间转换成格式为 yy-MM-dd HH:mm:ss.SSS 的字符串
-     * 
-     * @param d
-     *            时间对象
+     *
+     * @param d 时间对象
      * @return 该时间的字符串形式 , 格式为 yy-MM-dd HH:mm:ss.SSS
      */
     public static String sDTms2(Date d) {
@@ -439,9 +412,8 @@ public class Times {
 
     /**
      * 把时间转换成格式为 yyyy-MM-dd HH:mm:ss 的字符串
-     * 
-     * @param d
-     *            时间对象
+     *
+     * @param d 时间对象
      * @return 该时间的字符串形式 , 格式为 yyyy-MM-dd HH:mm:ss
      */
     public static String sDT(Date d) {
@@ -450,9 +422,8 @@ public class Times {
 
     /**
      * 把时间转换成格式为 yyyy-MM-dd 的字符串
-     * 
-     * @param d
-     *            时间对象
+     *
+     * @param d 时间对象
      * @return 该时间的字符串形式 , 格式为 yyyy-MM-dd
      */
     public static String sD(Date d) {
@@ -461,28 +432,24 @@ public class Times {
 
     /**
      * 将一个秒数（天中），转换成一个格式为 HH:mm:ss 的字符串
-     * 
-     * @param sec
-     *            秒数
+     *
+     * @param sec 秒数
      * @return 格式为 HH:mm:ss 的字符串
      */
     public static String sT(int sec) {
         int[] ss = T(sec);
         return Strings.alignRight(ss[0], 2, '0')
-               + ":"
-               + Strings.alignRight(ss[1], 2, '0')
-               + ":"
-               + Strings.alignRight(ss[2], 2, '0');
+                + ":"
+                + Strings.alignRight(ss[1], 2, '0')
+                + ":"
+                + Strings.alignRight(ss[2], 2, '0');
     }
 
     /**
      * 以本周为基础获得某一周的时间范围
-     * 
-     * @param off
-     *            从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
-     * 
+     *
+     * @param off 从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
      * @return 时间范围(毫秒级别)
-     * 
      * @see org.nutz.ztask.util.ZTasks#weeks(long, int, int)
      */
     public static Date[] week(int off) {
@@ -491,14 +458,10 @@ public class Times {
 
     /**
      * 以某周为基础获得某一周的时间范围
-     * 
-     * @param base
-     *            基础时间，毫秒
-     * @param off
-     *            从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
-     * 
+     *
+     * @param base 基础时间，毫秒
+     * @param off  从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
      * @return 时间范围(毫秒级别)
-     * 
      * @see org.nutz.ztask.util.ZTasks#weeks(long, int, int)
      */
     public static Date[] week(long base, int off) {
@@ -507,14 +470,10 @@ public class Times {
 
     /**
      * 以本周为基础获得时间范围
-     * 
-     * @param offL
-     *            从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
-     * @param offR
-     *            从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
-     * 
+     *
+     * @param offL 从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
+     * @param offR 从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
      * @return 时间范围(毫秒级别)
-     * 
      * @see org.nutz.ztask.util.ZTasks#weeks(long, int, int)
      */
     public static Date[] weeks(int offL, int offR) {
@@ -527,14 +486,10 @@ public class Times {
      * 它会根据给定的 offL 和 offR 得到一个时间范围
      * <p>
      * 对本函数来说 week(-3,-5) 和 week(-5,-3) 是一个意思
-     * 
-     * @param base
-     *            基础时间，毫秒
-     * @param offL
-     *            从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
-     * @param offR
-     *            从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
-     * 
+     *
+     * @param base 基础时间，毫秒
+     * @param offL 从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
+     * @param offR 从本周偏移几周， 0 表示本周，-1 表示上一周，1 表示下一周
      * @return 时间范围(毫秒级别)
      */
     public static Date[] weeks(long base, int offL, int offR) {
@@ -566,21 +521,21 @@ public class Times {
     }
 
     private static final String[] _MMM = new String[]{"Jan",
-                                                      "Feb",
-                                                      "Mar",
-                                                      "Apr",
-                                                      "May",
-                                                      "Jun",
-                                                      "Jul",
-                                                      "Aug",
-                                                      "Sep",
-                                                      "Oct",
-                                                      "Nov",
-                                                      "Dec"};
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"};
 
     /**
      * 将一个时间格式化成容易被人类阅读的格式
-     * 
+     * <p>
      * <pre>
      * 如果 1 分钟内，打印 Just Now
      * 如果 1 小时内，打印多少分钟
@@ -588,7 +543,7 @@ public class Times {
      * 如果是今年之内，打印月份和日期
      * 否则打印月份和年
      * </pre>
-     * 
+     *
      * @param d
      * @return
      */
@@ -631,11 +586,9 @@ public class Times {
 
     /**
      * 以给定的时间格式来安全的对时间进行格式化，并返回格式化后所对应的字符串
-     * 
-     * @param fmt
-     *            时间格式
-     * @param d
-     *            时间对象
+     *
+     * @param fmt 时间格式
+     * @param d   时间对象
      * @return 格式化后的字符串
      */
     public static String format(DateFormat fmt, Date d) {
@@ -644,11 +597,9 @@ public class Times {
 
     /**
      * 以给定的时间格式来安全的对时间进行格式化，并返回格式化后所对应的字符串
-     * 
-     * @param fmt
-     *            时间格式
-     * @param d
-     *            时间对象
+     *
+     * @param fmt 时间格式
+     * @param d   时间对象
      * @return 格式化后的字符串
      */
     public static String format(String fmt, Date d) {
@@ -657,47 +608,39 @@ public class Times {
 
     /**
      * 以给定的时间格式来安全的解析时间字符串，并返回解析后所对应的时间对象（包裹RuntimeException）
-     * 
-     * @param fmt
-     *            时间格式
-     * @param s
-     *            时间字符串
+     *
+     * @param fmt 时间格式
+     * @param s   时间字符串
      * @return 该时间字符串对应的时间对象
      */
     public static Date parseq(DateFormat fmt, String s) {
         try {
             return parse(fmt, s);
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
     }
 
     /**
      * 以给定的时间格式来安全的解析时间字符串，并返回解析后所对应的时间对象（包裹RuntimeException）
-     * 
-     * @param fmt
-     *            时间格式
-     * @param s
-     *            时间字符串
+     *
+     * @param fmt 时间格式
+     * @param s   时间字符串
      * @return 该时间字符串对应的时间对象
      */
     public static Date parseq(String fmt, String s) {
         try {
             return parse(fmt, s);
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
     }
 
     /**
      * 以给定的时间格式来安全的解析时间字符串，并返回解析后所对应的时间对象
-     * 
-     * @param fmt
-     *            时间格式
-     * @param s
-     *            日期时间字符串
+     *
+     * @param fmt 时间格式
+     * @param s   日期时间字符串
      * @return 该时间字符串对应的时间对象
      */
     public static Date parse(DateFormat fmt, String s) throws ParseException {
@@ -706,11 +649,9 @@ public class Times {
 
     /**
      * 以给定的时间格式来安全的解析时间字符串，并返回解析后所对应的时间对象
-     * 
-     * @param fmt
-     *            时间格式
-     * @param s
-     *            日期时间字符串
+     *
+     * @param fmt 时间格式
+     * @param s   日期时间字符串
      * @return 该时间字符串对应的时间对象
      */
     public static Date parse(String fmt, String s) throws ParseException {
@@ -733,15 +674,15 @@ public class Times {
 
     /**
      * 方便的把时间换算成毫秒数
-     * 
+     * <p>
      * 支持几个单位, s(秒), m(分钟), h(小时), d(天)
-     * 
+     * <p>
      * 比如:
-     * 
+     * <p>
      * 100s - 100000 <br>
      * 2m - 120000 <br>
      * 3h - 10800000 <br>
-     * 
+     *
      * @param tstr
      * @return
      */
@@ -780,13 +721,12 @@ public class Times {
 
     /**
      * 一段时间长度的毫秒数转换为一个时间长度的字符串
-     * 
+     * <p>
      * 1000 -> 1s
-     * 
+     * <p>
      * 120000 - 2m
-     * 
-     * @param mi
-     *            毫秒数
+     *
+     * @param mi 毫秒数
      * @return 可以正常识别的文字
      */
     public static String fromMillis(long mi) {
@@ -799,21 +739,25 @@ public class Times {
 
     public static String _fromMillis(long mi, String S, String M, String H, String D) {
         if (mi < T_1S) {
-            return "0"+D;
+            return "0" + D;
         }
         if (mi < T_1M) {
-            return (int) mi / T_1S + S;
+            return mi / T_1S + S;
         }
         if (mi < T_1H) {
-            int m = (int) mi / T_1M;
+            long m = mi / T_1M;
             return m + M + _fromMillis(mi - m * T_1M, S, M, H, D);
         }
         if (mi < T_1D) {
-            int h = (int) mi / T_1H;
+            long h = mi / T_1H;
             return h + H + _fromMillis(mi - h * T_1H, S, M, H, D);
         }
         // if (mi > T_1D)
-        int d = (int) mi / T_1D;
+        long d = mi / T_1D;
         return d + D + _fromMillis(mi - d * T_1D, S, M, H, D);
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(fromMillisCN(10000000000l));
+//    }
 }

@@ -38,9 +38,8 @@ public class EncryptUtil {
 	}
 
 	// 对密码加密
-	public static String pwd(Date date, String pwd) {
-		long time = date.getTime();
-		time = time / 10000;
+	public static String pwd(long timestamp, String pwd) {
+		long time = timestamp / 1000;
 		return EncryptUtil.md5(pwd + time);
 	}
 

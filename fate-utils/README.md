@@ -2,6 +2,8 @@
 
 echarts相关实体类制作中
 
+## 1.0.4
+1. 更新OSS相关方法
 
 ### 2017-05-27
 1. ClientInfo改名为IPUtil

@@ -49,6 +49,8 @@ public enum Aliyun {
     //OSS部分
     private String ossUrl;
     private String ossBucket;
+    private String ossRegion;
+    private int ossNet;
     private String ossEndpoint;
     private OSSClient ossClient;
 
@@ -80,17 +82,17 @@ public enum Aliyun {
      * @param endpoint    OSS地址
      * @param ossUrl      CName的URL
      * @param ossBucket   bucket
-     * @param ossEndpoint
      */
-    public void initOSS(String endpoint, String ossUrl, String ossBucket, String ossEndpoint) {
+    public void initOSS(String ossRegion, int ossNet, String ossUrl, String ossBucket) {
         ClientConfiguration conf = new ClientConfiguration();
         conf.setConnectionTimeout(5000);
         conf.setMaxErrorRetry(10);
 //        conf.setSupportCname(true);
         this.ossBucket = ossBucket;
         this.ossUrl = ossUrl;
-        this.ossEndpoint = ossEndpoint;
-        ossClient = new OSSClient("http://" + endpoint, accessKeyId, accessKeySecret, conf);
+        this.ossNet = ossNet;
+        this.ossEndpoint = ossRegion + (ossNet==2?"-internal":"") + ".aliyuncs.com";
+        ossClient = new OSSClient("http://" + ossEndpoint, accessKeyId, accessKeySecret, conf);
     }
 
     /**
@@ -232,6 +234,14 @@ public enum Aliyun {
 
     public String getAccessKeySecret() {
         return accessKeySecret;
+    }
+
+    public String getOssRegion() {
+        return ossRegion;
+    }
+
+    public int getOssNet() {
+        return ossNet;
     }
 
     public IAcsClient getClient() {
