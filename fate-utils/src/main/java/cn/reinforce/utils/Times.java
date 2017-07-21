@@ -799,21 +799,21 @@ public class Times {
 
     public static String _fromMillis(long mi, String S, String M, String H, String D) {
         if (mi < T_1S) {
-            return "0"+D;
+            return "0" + D;
         }
         if (mi < T_1M) {
-            return (int) mi / T_1S + S;
+            return mi / T_1S + S;
         }
         if (mi < T_1H) {
-            int m = (int) mi / T_1M;
+            long m = mi / T_1M;
             return m + M + _fromMillis(mi - m * T_1M, S, M, H, D);
         }
         if (mi < T_1D) {
-            int h = (int) mi / T_1H;
+            long h = mi / T_1H;
             return h + H + _fromMillis(mi - h * T_1H, S, M, H, D);
         }
         // if (mi > T_1D)
-        int d = (int) mi / T_1D;
+        long d = mi / T_1D;
         return d + D + _fromMillis(mi - d * T_1D, S, M, H, D);
     }
 }
