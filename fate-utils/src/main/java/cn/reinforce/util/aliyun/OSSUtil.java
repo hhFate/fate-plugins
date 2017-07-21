@@ -149,6 +149,23 @@ public class OSSUtil {
     }
 
     /**
+     * 直接上传文件流
+     * @param bucketName
+     * @param is
+     * @param folder
+     * @param filename
+     * @return
+     */
+    public static PutObjectResult simpleUpload(String bucketName, InputStream is, String folder, String filename) {
+        String key = folder + filename;
+        PutObjectResult result = null;
+        ObjectMetadata meta = new ObjectMetadata();
+//        meta.setContentLength(is.available());
+        result = Aliyun.INSTANCE.getOSSClient().putObject(bucketName, key, is, meta);// 会自动关闭流？
+        return result;
+    }
+
+    /**
      * 文件下载
      *
      * @param bucketName
