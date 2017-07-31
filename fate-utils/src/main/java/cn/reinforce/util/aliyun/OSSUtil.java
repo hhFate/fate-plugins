@@ -43,6 +43,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -122,7 +123,7 @@ public class OSSUtil {
             InputStream content = clientFile.getInputStream();
             ObjectMetadata meta = new ObjectMetadata();
             meta.setContentLength(clientFile.getSize());
-            meta.setContentType(clientFile.getContentType());
+//            meta.setContentType(clientFile.getContentType());
             result = Aliyun.INSTANCE.getOSSClient().putObject(bucketName, key, content, meta);// 会自动关闭流？
         } catch (IOException e) {
             LOG.error(e);
@@ -143,6 +144,7 @@ public class OSSUtil {
         String key = folder + filename;
         PutObjectResult result = null;
         ObjectMetadata meta = new ObjectMetadata();
+//        meta.setContentType(Files.probeContentType(filename));
         meta.setContentLength(file.getTotalSpace());
         result = Aliyun.INSTANCE.getOSSClient().putObject(bucketName, key, file, meta);// 会自动关闭流？
         return result;
