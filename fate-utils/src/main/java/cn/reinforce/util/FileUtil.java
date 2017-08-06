@@ -50,6 +50,18 @@ public class FileUtil {
     }
 
     /**
+     * 判断文件是否是视频
+     * @param filename
+     * @return
+     */
+    public static boolean isVideo(String filename) {
+
+        String reg = "[\\s\\S]+.(mp4|avi|flv|rm|rmvb|wmv)";
+
+        return filename.toLowerCase().matches(reg);
+    }
+
+    /**
      * 检测文件是否为FreeMarker的模版文件
      *
      * @param fileName
