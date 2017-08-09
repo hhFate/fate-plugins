@@ -456,7 +456,7 @@ public class OSSUtil {
 
 
     public static void setReferer(String referer, boolean allowEmptyReferer) {
-        List<String> refererList = new ArrayList<String>();
+        List<String> refererList = new ArrayList<>();
         String[] referers = referer.split("\n");
         for (String s : referers) {
             refererList.add(s);

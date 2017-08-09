@@ -2,6 +2,7 @@ package cn.reinforce.util;
 
 import cn.reinforce.util.entity.HttpResult;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -32,7 +33,7 @@ import java.util.Map;
  * 模拟http请求的工具类
  * 支持get，post，put，delete
  *
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-09-06
  * @since 1.0.0
  */
@@ -80,7 +81,7 @@ public class HttpClientUtil {
         }
         // Now write the image
         String fullFilePath = parameters.get("file_path");
-        if (!Strings.isEmpty(fullFilePath)) {
+        if (!StringUtils.isEmpty(fullFilePath)) {
             multipartEntity.addPart("uploadFile", new FileBody(new File(fullFilePath)));
         }
 
@@ -195,7 +196,7 @@ public class HttpClientUtil {
     public static String downloadImg(String url, String folder, String downloadUrl) {
         CloseableHttpClient httpclient = HttpClients.createDefault();
         String fileType = url.substring(url.lastIndexOf(".") + 1);
-        if (Strings.isEmpty(fileType) || !ImageUtils.isImage(fileType)) {
+        if (StringUtils.isEmpty(fileType) || !ImageUtils.isImage(fileType)) {
             fileType = "jpg";
         }
         fileType = "." + fileType;

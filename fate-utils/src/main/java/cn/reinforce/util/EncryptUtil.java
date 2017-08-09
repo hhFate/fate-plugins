@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 
 /**
  * 各种加密相关
- * @author hhFate
+ * @author 幻幻Fate
  * @create
  * @since
  */

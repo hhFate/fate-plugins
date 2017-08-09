@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>cn.reinforce.plugins</groupId>
 		<artifactId>plugins</artifactId>
-		<version>1.0.3</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>weibo4j</artifactId>
 	<name>幻幻的插件库--新浪微博</name>
 	<url>http://www.reinforce.cn</url>
-
+	<version>1.0.0</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>

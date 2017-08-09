@@ -17,7 +17,7 @@ public class ChatPushView {
 	/**
 	 * 接收人的手机号
 	 */
-	private List<String> mobile = new ArrayList<String>();
+	private List<String> mobile = new ArrayList<>();
 	
 	/**
 	 * 推送通知的内容

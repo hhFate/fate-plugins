@@ -3,7 +3,7 @@ package cn.reinforce.util;
 /**
  * Token生成工具
  *
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-07-28
  * @since 1.0.0
  */

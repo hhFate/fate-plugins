@@ -1,12 +1,14 @@
 package cn.reinforce.util;
 
+import org.apache.commons.lang.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 搜索引擎工具
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-07-28
  * @since 1.0.0
  */
@@ -121,7 +123,7 @@ public class SpiderUtil {
     public static Map<String, Object> getSpider(HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
         String agent = request.getHeader("User-Agent");
-        if(Strings.isEmpty(agent)){
+        if(StringUtils.isEmpty(agent)){
             map.put("isSpider", false);
             map.put("isScanner", false);
             map.put("spiderName","模拟访问");

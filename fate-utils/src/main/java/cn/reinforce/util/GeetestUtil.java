@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 极验验证的二次验证
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-08-17
  * @since 1.0.0
  */

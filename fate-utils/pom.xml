@@ -9,6 +9,7 @@
 	</parent>
 	<artifactId>fate-utils</artifactId>
 	<name>幻幻的工具箱</name>
+	<version>1.0.5</version>
 	<url>http://www.reinforce.cn</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

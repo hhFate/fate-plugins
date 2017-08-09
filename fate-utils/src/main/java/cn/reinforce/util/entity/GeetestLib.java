@@ -9,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Java SDK
@@ -464,7 +465,7 @@ public class GeetestLib {
     private int decodeRandBase(String challenge) {
 
         String base = challenge.substring(32, 34);
-        ArrayList<Integer> tempArray = new ArrayList<Integer>();
+        List<Integer> tempArray = new ArrayList<>();
 
         for (int i = 0; i < base.length(); i++) {
             char tempChar = base.charAt(i);

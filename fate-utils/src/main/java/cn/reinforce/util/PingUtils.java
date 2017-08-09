@@ -17,7 +17,7 @@ import org.dom4j.Element;
 /**
  * SEO优化，搜索引擎ping工具
  * 
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-09-06
  * @since 1.0.0
  */

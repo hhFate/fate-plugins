@@ -3,7 +3,7 @@ package cn.reinforce.util;
 import java.io.UnsupportedEncodingException;
 
 /**
- * 请使用Java8自带的base64
+ * @deprecated 请使用Java8自带的base64
  */
 @Deprecated
 public class Base64 {

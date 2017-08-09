@@ -36,7 +36,7 @@ public class UserTimelineIds extends WeiboResponse {
 			marks = json.getString("marks");
 			JSONArray list = json.getJSONArray("statuses");
 			int size = list.length();
-			statusesIds = new ArrayList<String>(size);
+			statusesIds = new ArrayList<>(size);
 			for (int i = 0; i < size; i++) {
 				statusesIds.add(list.getString(i));
 			}
@@ -55,7 +55,7 @@ public class UserTimelineIds extends WeiboResponse {
 			marks = json.getString("marks");
 			JSONArray list = json.getJSONArray("statuses");
 			int size = list.length();
-			statusesIds = new ArrayList<String>(size);
+			statusesIds = new ArrayList<>(size);
 			for (int i = 0; i < size; i++) {
 				statusesIds.add(list.getString(i));
 			}

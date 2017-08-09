@@ -6,10 +6,11 @@
 	<parent>
 		<groupId>cn.reinforce.plugins</groupId>
 		<artifactId>plugins</artifactId>
-		<version>1.0.3</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>qq4j</artifactId>
 	<name>插件库--QQ</name>
+	<version>1.0.0</version>
 	<url>http://www.reinforce.cn</url>
 	<description>基于qq4j，key、secret从配置文件读取改为从方法set</description>
 	<properties>

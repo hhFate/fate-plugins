@@ -8,7 +8,7 @@ import org.jsoup.nodes.Document;
 
 /**
  * 友链工具
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-09-06
  * @since 1.0.0
  */

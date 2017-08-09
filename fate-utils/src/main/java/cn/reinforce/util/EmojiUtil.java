@@ -9,6 +9,11 @@ import org.apache.commons.lang.StringUtils;
  */
 public class EmojiUtil {
 
+    /**
+     * 字符串中是否包含Emoji表情
+     * @param source
+     * @return
+     */
     public static boolean containsEmoji(String source) {
         int len = source.length();
         boolean isEmoji = false;

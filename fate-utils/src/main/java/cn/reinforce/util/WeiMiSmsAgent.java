@@ -12,7 +12,7 @@ import org.json.JSONObject;
 /**
  * 微米的短信接口
  * 
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-09-06
  * @since 1.0.0
  */
@@ -23,7 +23,7 @@ public class WeiMiSmsAgent {
 
 	public static Map<String, Object> sendSms(String mobiles, String code, int timeout) {
 
-		Map<String, Object> result = new HashMap<String, Object>();
+		Map<String, Object> result = new HashMap<>();
 		List<NameValuePair> pair = new ArrayList<>();
 		/**
 		 * 目标手机号码，多个以“,”分隔，一次性调用最多100个号码，示例：139********,138********

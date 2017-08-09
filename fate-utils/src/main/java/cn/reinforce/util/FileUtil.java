@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  * 文件相关方法
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-09-06
  * @since 1.0.0
  */

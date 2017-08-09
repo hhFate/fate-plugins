@@ -14,7 +14,7 @@ import org.apache.log4j.Logger;
 /**
  * MD5
  *
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-09-06
  * @since 1.0.0
  */
@@ -23,7 +23,15 @@ public class MD5 {
 	private static Logger LOG = Logger.getLogger(MD5.class);
 	
 	private MD5() {}
-	
+
+	/**
+	 * 获取一个文件的md5值
+	 * @param is
+	 * @param skipBytes
+	 * @param len
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public static String getMd5ByFile(InputStream is, long skipBytes, long len)
 			throws FileNotFoundException {
 		String value = null;

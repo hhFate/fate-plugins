@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 /**
  * HTML处理工具
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-08-17
  * @since 1.0.0
  */

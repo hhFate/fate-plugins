@@ -12,7 +12,7 @@ import com.google.gson.JsonSerializer;
  * 对Gson进行简单的配置
  * 默认Date类型转换成时间戳
  * 加上@Expose的字段才有效
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-08-17
  * @since 1.0.0
  */

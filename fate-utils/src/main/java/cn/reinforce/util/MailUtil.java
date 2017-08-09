@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 /**
  * Email相关工具类
  *
- * @author hhFate
+ * @author 幻幻Fate
  * @create 2016-09-06
  * @since 1.0.0
  */

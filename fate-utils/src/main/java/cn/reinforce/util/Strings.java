@@ -10,10 +10,12 @@ import java.util.regex.Pattern;
 
 /**
  * 字符串处理工具
- * @author hhFate
+ * 请使用官方的org.apache.commons.lang.StringUtils
+ * @author 幻幻Fate
  * @create 2016-07-28
  * @since 1.0.0
  */
+@Deprecated
 public class Strings {
 
 	/**
