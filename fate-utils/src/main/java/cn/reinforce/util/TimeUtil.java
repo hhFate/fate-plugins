@@ -1,15 +1,9 @@
 package cn.reinforce.util;
 
-import org.apache.commons.lang.StringUtils;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 /**
@@ -213,7 +207,19 @@ public class TimeUtil {
         return d + D + _fromMillis(mi - d * T_1D, S, M, H, D);
     }
 
+    /**
+     * 粗略的生日计算年龄方法
+     * @param birthday
+     * @return
+     */
+    public static int birthdayToAge(Date birthday){
+        long now = System.currentTimeMillis();
+        long diff = now - birthday.getTime();
+        int age = (int) (diff/(3600000*24*365L));
+        return age;
+    }
+
 //    public static void main(String[] args) {
-//        System.out.println(fromMillisCN(1000000000l));
+//        System.out.println(birthdayToAge(parseDate("1992-01-11", "yyyy-MM-dd")));
 //    }
 }
