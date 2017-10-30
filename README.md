@@ -5,6 +5,6 @@
 * 新浪微博----------------------修改版的新浪微博登录插件
 
 # 本项目已经差分成了3个独立分支，新分支的fate-utils从1.1.0版本开始，文件命名有较大改动,包名从cn.reinforce.xx更新到cn.reinforce.plugin.xx
-* [fate-utils](http://git.oschina.net/hhfate/fate-utils)
-* [QQ](http://git.oschina.net/hhfate/fate-qq4j)
-* [新浪微博](http://git.oschina.net/hhfate/fate-weibo4j)
+* [fate-utils](https://github.com/hhFate/fate-utils)
+* [QQ](https://github.com/hhFate/fate-qq4j)
+* [新浪微博](https://github.com/hhFate/fate-weibo4j)
